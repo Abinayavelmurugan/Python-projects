@@ -1,0 +1,42 @@
+import random
+
+snake = {17: 7, 62: 18, 64: 60, 54: 34, 87: 74, 92: 73, 95: 75, 98: 79}
+ladder = {4: 14, 9: 31, 28: 84, 11: 38, 51: 67, 72: 91, 21: 42}
+
+def mov(place, dice):
+    nplace = place + dice
+    if nplace>100:
+        return place
+    elif nplace in snake:
+        print("\n***Bitten by snake!!!!***")
+        nplace = snake[nplace]
+    elif nplace in ladder:
+        print("\n***Reaching towards success!!!!***\n")
+        nplace = ladder[nplace]
+    return nplace    
+
+place1, place2 = 0, 0
+c=1
+while c==1:
+    # Player 1's turn
+    print("\nPlayer 1 throws a dice:"
+    )
+    input("Press Enter to roll the dice...")
+    dice1 = random.randint(1, 6)
+    print("Dice roll for Player 1:", dice1)
+    place1 = mov(place1, dice1)
+    print("Player 1's position:", place1)
+    if place1 ==100:
+        print("\n******Player 1 wins!!!******")
+        break
+    
+    # Player 2's turn
+    print("\nPlayer 2 throws a dice:")
+    input("Press Enter to roll the dice...")
+    dice2 = random.randint(1, 6)
+    print("Dice roll for Player 2:", dice2)
+    place2 = mov(place2, dice2)
+    print("Player 2's position:", place2)
+    if place2 ==100:
+        print("\n*******Player 2 wins!!!******\n")
+        break
